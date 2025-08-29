@@ -1,0 +1,34 @@
+services:
+  # Demo application service
+  demo-app:
+    image: automaticbytes/demo-app
+    container_name: demo-app
+    ports:
+      - "3100:3100"
+    networks:
+      - test-network
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3100 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # Test service
+  tests:
+    build: .
+    container_name: test-runner
+    depends_on:
+      - demo-app
+    environment:
+      - BASE_URL=http://demo-app:3100
+      - CI=true
+    volumes:
+      - ./test-results:/app/test-results
+      - ./playwright-report:/app/playwright-report
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
