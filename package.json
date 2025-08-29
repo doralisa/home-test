@@ -1,0 +1,27 @@
+{
+  "name": "home-test",
+  "version": "1.0.0",
+  "description": "Automation test suite for demo app using Playwright and TypeScript",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:all-platforms": "playwright test --project=chromium --project=firefox --project=webkit --project=mobile-chrome --project=mobile-safari --project=tablet",
+    "test:desktop": "playwright test --project=chromium --project=firefox --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-safari --project=tablet",
+    "test:docker": "docker-compose up --abort-on-container-exit",
+    "test:docker-build": "docker-compose up --build --abort-on-container-exit",
+    "test:docker-clean": "docker-compose down --volumes --remove-orphans",
+    "report": "playwright show-report",
+    "install-browsers": "playwright install"
+  },
+  "keywords": ["automation", "testing", "playwright", "typescript"],
+  "author": "Doralys Contreras",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "typescript": "^5.0.0"
+  }
+}
