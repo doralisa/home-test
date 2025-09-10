@@ -20,7 +20,7 @@ A comprehensive test automation suite built with Playwright and TypeScript, impl
 
 ### 1. Clone the repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/doralisa/home-test
 cd home-test
 ```
 
